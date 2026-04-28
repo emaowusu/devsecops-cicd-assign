@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/devsecops-cicd:staging .
@@ -55,4 +55,4 @@ jobs:
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/devsecops-cicd:staging
             docker stop devsecops-cicd:staging || true
             docker rm devsecops-cicd:staging || true
-            docker run -d -p 80:3000 --name ${{ secrets.DOCKERHUB_USERNAME }}/devsecops-cicd:staging
+            docker run -d -p 80:3000 --name devsecops-cicd ${{ secrets.DOCKERHUB_USERNAME }}/devsecops-cicd:staging
