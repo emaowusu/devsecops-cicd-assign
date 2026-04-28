@@ -1,0 +1,9 @@
+body {
+  font-family: Arial;
+  background-color: #111827;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
