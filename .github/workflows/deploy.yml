@@ -53,6 +53,6 @@ jobs:
           key: ${{ secrets.STAGING_SSH_KEY }}
           script: |
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/devsecops-cicd:staging
-            docker stop devsecops-cicd:staging || true
-            docker rm devsecops-cicd:staging || true
+            docker stop devsecops-cicd || true
+            docker rm -f devsecops-cicd || true
             docker run -d -p 3000:3000 --name devsecops-cicd ${{ secrets.DOCKERHUB_USERNAME }}/devsecops-cicd:staging
