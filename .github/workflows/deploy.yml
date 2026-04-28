@@ -55,4 +55,4 @@ jobs:
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/devsecops-cicd:staging
             docker stop devsecops-cicd || true
             docker rm -f devsecops-cicd || true
-            docker run -d -p 3000:3000 --name devsecops-cicd ${{ secrets.DOCKERHUB_USERNAME }}/devsecops-cicd:staging
+            docker run -d -p 80:3000 --name devsecops-cicd ${{ secrets.DOCKERHUB_USERNAME }}/devsecops-cicd:staging
